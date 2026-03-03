@@ -14,4 +14,20 @@ int main(int argc, char **argv) {
 
   Ensure that you have appropriate validation.
   */
+
+  FILE *fp = fopen(argv[1],"r");
+  
+  if(fp == NULL){
+    printf("Error file not found");
+    return 1;
+  }
+
+  int number_lines;
+  int number_characters;
+  int number_words;
+  char buffer[100];
+
+
+
+
 }

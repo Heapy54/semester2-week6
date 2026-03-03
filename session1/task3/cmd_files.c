@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
       Test it with some of the files in /txt_files.
   */
 
-  FILE *file = fopen("poem.txt", "r");
+  FILE *file = fopen("txt_files/poem.txt", "r");
   char buffer[100];
 
   if (file == NULL) {

@@ -16,6 +16,23 @@ int factorial(int n) {
   return n * factorial(n - 1);
 }
 
+int nCr (int n, int r){
+  int n_facrorial = factorial(n);
+  int r_facorial = factorial(r);
+  int n_sub_r_facorial = factorial(n-r);
+
+  int result = n_facrorial / (r_facorial*n_sub_r_facorial);
+  return result;
+}
+
+int nPr (int n, int r){
+  int n_facrorial = factorial(n);
+  int n_sub_r_facorial = factorial(n-r);
+
+  int result = n_facrorial / n_sub_r_facorial;
+  return result;
+}
+
 int main(int argc, char **argv) {
   /*
   The program should accept a command line argument as follows:
@@ -40,4 +57,34 @@ int main(int argc, char **argv) {
   You should try and use functions to write your program.
 
   */
+
+  if(argc < 4){
+    printf("Usage: ./combinatorials n C||P r\n");
+    return 1;
+  }
+  
+  char buffer[50];
+  int n = atoi(argv[1]);
+  int r = atoi(argv[3]);
+  char *operation = argv[2];
+  int result = 0;
+  
+  if(r<=n){
+    printf("r must not be less than or equal to n\n");
+    return 1;
+  }
+
+  if(*operation == 'c' || *operation == 'C'){
+    result = nCr(n, r);
+    printf("nCr = %d\n",result);
+  }
+  else if (*operation == 'p' || *operation =='P' ){
+    result = nPr(n,r);
+    printf("nPr = %d\n",result);
+  }
+  else{
+    printf("Enter a valid operation either C or P");
+  }
+
+  return 0;
 }

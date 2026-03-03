@@ -8,12 +8,12 @@ double rectangle_area(int height, int width) {
   return width * height;
 }
 
-void find_circle_area(double radius) {
+double find_circle_area(double radius) {
   return PI * radius * radius;
 }
 
 double triangle_area(double base, double height) {
-  printf("%f\n", 0.5 * base * height);
+  return 0.5 * base * height;
 }
 
 int main(int argc, char *argv[]) {
@@ -51,8 +51,7 @@ int main(int argc, char *argv[]) {
     double radius = atof(argv[2]);
     printf("Circle Area: %.2f\n", find_circle_area(radius));
   } else {
-    printf("Error: Unknown shape '%s'. Use rectangle, triangle, or circle.\n",
-           shape);
+    printf("Error: Unknown shape '%s'. Use rectangle, triangle, or circle.\n",shape);
     return 1;
   }
 
