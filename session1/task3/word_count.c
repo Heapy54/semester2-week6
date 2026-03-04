@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(int argc, char **argv) {
   /*
@@ -22,12 +23,32 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  int number_lines;
-  int number_characters;
-  int number_words;
+  int number_lines = 0;
+  int number_characters = 0;
+  int number_words = 0;
   char buffer[100];
+  char ch;
+  bool is_word = false;
 
+  //read the file character by character
+  while((ch = fgetc(fp)) != EOF){
+    number_characters +=1;
+    if(ch == '\n'){
+      number_lines +=1;
+    }
+    if(isspace(ch)){
+      is_word = false;
+    }
+    else{
+      number_words +=1;
+      is_word = true;
+    }
+  }
 
-
+  //print the results
+  printf("Results: \n");
+  printf("Number of lines: %d\n",number_lines);
+  printf("Number of characters: %d\n",number_characters);
+  printf("Number of words: %d\n",number_words);
 
 }
