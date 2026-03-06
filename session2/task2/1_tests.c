@@ -37,7 +37,34 @@ void test_obvious_palindrome(void) {
  * 1. Call TEST_CHECK(condition) to verify a condition
  * 2. Use TEST_MSG("message") to explain what went wrong if it fails
  * ============================================================ */
+//single character
+void test_single_character(void){
+    TEST_CHECK(is_palindrome("a") == 1);
+    TEST_MSG("Expected 'a' to be a palindrome");
+}
 
+//empty string
+void test_empty_string(void){
+    TEST_CHECK(is_palindrome("") == 1);
+    TEST_MSG("Expected "" to be a palindrome");
+}
+
+//non palindrome
+void test_non_palendrome(void){
+    TEST_CHECK(is_palindrome("hello") == 0);
+    TEST_MSG("Expected 'hello' not to be a palindrome");
+}
+
+//even length palendrome
+void test_even_length_palendrome(void){
+    TEST_CHECK(is_palindrome("abba") == 1);
+    TEST_MSG("Expected 'abba' to be a palindrome");
+}
+//edge case with capitals
+void test_capitals(void){
+    TEST_CHECK(is_palindrome("Abba") == 1);
+    TEST_MSG("Expected 'Abba' to be a palindrome");
+}
 
 
 /* ============================================================
@@ -52,6 +79,11 @@ TEST_LIST = {
      * { "single character", test_single_char },
      * { "empty string", test_empty_string },
      */
+    {"Expected 'a' to be a palindrome",test_single_character},
+    {"Expected "" to be a palindrome",test_empty_string},
+    {"Expected 'hello' not to be a palindrome",test_non_palendrome},
+    {"Expected 'abba' to be a palindrome",test_even_length_palendrome},
+    {"Expected 'Abba' to be a palindrome",test_capitals},
     { NULL, NULL }
 };
 
